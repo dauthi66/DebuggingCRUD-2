@@ -44,7 +44,7 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
             Student p = StudentDb.GetStudent(context, id);
 
             //show it on web page
-            return View();
+            return View(p);
         }
 
         [HttpPost]
@@ -53,11 +53,12 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
             if (ModelState.IsValid)
             {
                 StudentDb.Update(context, p);
-                TempData["Message"] = $"Student {p} Updated!";
-                return View(p);
+                TempData["Message"] = $"Student {p.Name} Updated!";
+                return RedirectToAction("Index");
             }
             //return view with errors
-            return View(p);
+            return View();
+            
         }
 
         public IActionResult Delete(int id)
