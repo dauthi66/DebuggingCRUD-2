@@ -53,7 +53,7 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
             if (ModelState.IsValid)
             {
                 StudentDb.Update(context, p);
-                ViewData["Message"] = "Product Updated!";
+                TempData["Message"] = $"Student {p} Updated!";
                 return View(p);
             }
             //return view with errors
