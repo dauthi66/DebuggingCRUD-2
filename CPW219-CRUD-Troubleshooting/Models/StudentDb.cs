@@ -6,6 +6,7 @@
         {
             //Add student to context
             db.Students.Add(p);
+            db.SaveChanges();
             return p;
         }
 
@@ -24,12 +25,13 @@
             return p2;
         }
 
-        public static void Delete(SchoolContext context, Student p)
+        public static void Update(SchoolContext context, Student p)
         {
             context.Students.Update(p);
+            context.SaveChanges();
         }
 
-        public static void Update(SchoolContext context, Student p)
+        public static void Delete(SchoolContext context, Student p)
         {
             //Mark the object as deleted
             context.Students.Remove(p);
